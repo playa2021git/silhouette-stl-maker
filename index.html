@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>シルエットSTLメーカー</title>
+    <style>
+      .boot-message {
+        max-width: 760px;
+        margin: 48px auto;
+        padding: 24px;
+        font-family: system-ui, sans-serif;
+        line-height: 1.7;
+        color: #17324d;
+        background: #f5f8fb;
+        border: 1px solid #c6d5e1;
+        border-radius: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" data-loading="true">
+      <div class="boot-message">
+        <h1>シルエットSTLメーカーを読み込み中です</h1>
+        <p>このアプリはViteでビルドした <code>dist/</code> をGitHub Pagesに公開する必要があります。</p>
+        <p>画面がこのまま変わらない場合は、GitHub Pagesの公開元がリポジトリ直下ではなく、ビルド済み成果物になっているか確認してください。</p>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+    <script>
+      window.setTimeout(function () {
+        var app = document.getElementById('app');
+        if (app && app.dataset.loading === 'true') {
+          app.querySelector('.boot-message p:last-child').textContent = 'アプリ本体を読み込めませんでした。GitHub Actionsで npm run build を実行し、dist/ をPagesに公開してください。';
+        }
+      }, 3000);
+    </script>
+  </body>
+</html>
