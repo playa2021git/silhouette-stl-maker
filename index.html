@@ -22,8 +22,9 @@
     <div id="app" data-loading="true">
       <div class="boot-message">
         <h1>シルエットSTLメーカーを読み込み中です</h1>
-        <p>このアプリはViteでビルドした <code>dist/</code> をGitHub Pagesに公開する必要があります。</p>
-        <p>画面がこのまま変わらない場合は、GitHub Pagesの公開元がリポジトリ直下ではなく、ビルド済み成果物になっているか確認してください。</p>
+        <p>アプリ本体を準備しています。通常は数秒で画面が切り替わります。</p>
+        <p>切り替わらない場合は、未ビルドのリポジトリ直下がGitHub Pagesで公開されています。</p>
+        <p><strong>対処:</strong> GitHubの Settings → Pages → Source を <strong>GitHub Actions</strong> に変更し、Actionsの「Deploy static app to GitHub Pages」を実行してください。</p>
       </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
@@ -31,7 +32,7 @@
       window.setTimeout(function () {
         var app = document.getElementById('app');
         if (app && app.dataset.loading === 'true') {
-          app.querySelector('.boot-message p:last-child').textContent = 'アプリ本体を読み込めませんでした。GitHub Actionsで npm run build を実行し、dist/ をPagesに公開してください。';
+          app.querySelector('.boot-message p:last-child').textContent = 'アプリ本体を読み込めませんでした。Pagesの公開元をGitHub Actionsに変更してから、最新コミットをpushするかworkflow_dispatchで再実行してください。';
         }
       }, 3000);
     </script>
