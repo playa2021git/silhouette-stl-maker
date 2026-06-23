@@ -46,9 +46,19 @@ npm run build
 
 `vite.config.ts` は `base: './'` にしているため、ビルド後の `dist` をGitHub Pagesに配置しやすい設定です。
 
-1. GitHub Actionsまたは手元で `npm run build` を実行します。
-2. 生成された `dist/` をGitHub Pagesの公開対象にします。
-3. リポジトリの Settings → Pages で公開元を設定します。
+このアプリはVite/TypeScriptアプリなので、リポジトリ直下をそのままGitHub Pagesで公開しても動きません。必ず `npm run build` で生成した `dist/` を公開してください。
+
+推奨手順:
+
+1. GitHubの Settings → Pages → Build and deployment で Source を **GitHub Actions** にします。
+2. `main` ブランチへpushすると、`.github/workflows/pages.yml` が `npm install` と `npm run build` を実行します。
+3. 成功すると、生成された `dist/` がGitHub Pagesへ公開されます。
+
+手動で公開する場合:
+
+1. 手元で `npm install` を実行します。
+2. `npm run build` を実行します。
+3. 生成された `dist/` の中身をGitHub Pagesの公開対象にします。
 
 ## アイコン追加方法
 

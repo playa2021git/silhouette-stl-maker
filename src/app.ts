@@ -13,6 +13,7 @@ import { defaultSettings } from './lib/units';
 import { validateSettings } from './lib/validation';
 
 export const startApp = (root: HTMLElement): void => {
+  delete root.dataset.loading;
   root.innerHTML = `
 <header><h1>シルエットSTLメーカー</h1><p>登録済みの安全なシンプルSVGを、ブラウザ内だけで3Dプリント用STLに変換します。</p></header>
 <main class="layout"><section class="panel"><h2>作る形を選ぶ</h2><label>キーワード<input id="keyword" placeholder="例：ハート、星、本、ひまわり"></label><p id="searchMessage" class="message"></p><div id="iconList" class="icon-list"></div><h2>サイズ設定</h2>${settingsMarkup()}<div class="actions"><button id="download" type="button">STLをダウンロード</button><button id="reset" type="button">リセット</button></div></section><section class="panel preview-panel"><h2>プレビュー</h2><div class="preview-grid"><div><h3>2Dシルエット</h3><div id="preview2d" class="preview2d"></div></div><div><h3>3Dプレビュー</h3><div id="preview3d" class="preview3d"></div></div></div><p id="sizeInfo" class="size-info"></p><ul id="warnings" class="warnings"></ul></section></main>
