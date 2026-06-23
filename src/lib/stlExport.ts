@@ -21,10 +21,11 @@ export const downloadStl = (group: THREE.Group, icon: IconDefinition, settings: 
   const exporter = new STLExporter();
   const result = exporter.parse(group, { binary: true });
   const blob = createStlBlob(result);
+  const totalDepth = settings.modelMode === 'relief' ? settings.plateThickness + settings.reliefHeight : settings.depth;
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `silhouette-${icon.id}-${settings.width}x${settings.height}x${settings.depth}mm.stl`;
+  a.download = `silhouette-${icon.id}-${settings.width}x${settings.height}x${totalDepth}mm.stl`;
   a.click();
   URL.revokeObjectURL(url);
 };
