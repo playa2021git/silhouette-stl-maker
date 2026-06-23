@@ -34,7 +34,7 @@ export const startApp = (root: HTMLElement): void => {
     preview3d.setModel(undefined);
     if (!selectedIcon || validation.errors.length > 0) return;
     try {
-      const built = createModelGroup(selectedIcon.svg, settings);
+      const built = createModelGroup(selectedIcon, settings);
       currentGroup = built.group;
       preview3d.setModel(currentGroup);
     } catch (error) {

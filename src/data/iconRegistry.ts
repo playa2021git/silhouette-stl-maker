@@ -14,9 +14,9 @@ export interface IconDefinition {
 const meta = { license: 'Original', source: 'Created for this project', modified: false } as const;
 const svg = (body: string) => `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="${body}" fill="currentColor"/></svg>`;
 
-// ひまわりは教材作品で見栄えが出やすいように、太めの放射花びらと大きめの種穴で構成したオリジナル図案。
-// 細い線を避け、レリーフ化したときに中心模様がプレート色で抜けて見えるよう fill-rule を使う。
-const sunflowerSvg = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 5 C57 15 57 25 50 33 C43 25 43 15 50 5 Z M67 10 C70 22 66 30 56 35 C55 24 59 16 67 10 Z M83 22 C81 34 74 41 62 42 C66 31 73 25 83 22 Z M94 42 C87 52 78 55 66 51 C74 43 83 40 94 42 Z M91 63 C80 69 71 67 64 58 C76 57 84 58 91 63 Z M78 82 C66 83 59 77 56 65 C66 70 73 75 78 82 Z M50 95 C43 85 43 75 50 67 C57 75 57 85 50 95 Z M22 82 C27 75 34 70 44 65 C41 77 34 83 22 82 Z M9 63 C16 58 24 57 36 58 C29 67 20 69 9 63 Z M6 42 C17 40 26 43 34 51 C22 55 13 52 6 42 Z M17 22 C27 25 34 31 38 42 C26 41 19 34 17 22 Z M33 10 C41 16 45 24 44 35 C34 30 30 22 33 10 Z" fill="currentColor"/><path fill-rule="evenodd" d="M50 29 A21 21 0 1 1 49.9 29 Z M50 39 A4 4 0 1 0 50.1 39 Z M39 45 A3.5 3.5 0 1 0 39.1 45 Z M61 45 A3.5 3.5 0 1 0 61.1 45 Z M43 58 A3.5 3.5 0 1 0 43.1 58 Z M57 58 A3.5 3.5 0 1 0 57.1 58 Z M50 51 A3.2 3.2 0 1 0 50.1 51 Z" fill="currentColor"/></svg>`;
+// ひまわりは教材作品で見栄えが出やすいように、太めの放射花びらと中心円を持つオリジナル図案。
+// STL生成時はSVGではなく createSunflowerRelief で花びら・中心円・種ドットを別レイヤー化する。
+const sunflowerSvg = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 6 C57 16 57 26 50 34 C43 26 43 16 50 6 Z M66 10 C71 20 67 31 57 36 C55 25 58 16 66 10 Z M82 21 C81 33 74 41 62 43 C66 32 72 25 82 21 Z M94 40 C88 50 79 55 66 52 C73 43 82 39 94 40 Z M92 61 C82 68 72 67 64 59 C75 57 84 57 92 61 Z M79 81 C67 83 59 77 56 65 C66 70 73 75 79 81 Z M50 94 C43 84 43 74 50 66 C57 74 57 84 50 94 Z M21 81 C27 75 34 70 44 65 C41 77 33 83 21 81 Z M8 61 C16 57 25 57 36 59 C28 67 18 68 8 61 Z M6 40 C18 39 27 43 34 52 C21 55 12 50 6 40 Z M18 21 C28 25 34 32 38 43 C26 41 19 33 18 21 Z M34 10 C42 16 45 25 43 36 C33 31 29 20 34 10 Z M50 30 A20 20 0 1 1 49.9 30 Z" fill="currentColor"/></svg>`;
 
 
 export const iconRegistry: IconDefinition[] = [

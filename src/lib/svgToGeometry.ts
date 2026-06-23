@@ -1,5 +1,7 @@
 import * as THREE from 'three';
 import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader.js';
+import type { IconDefinition } from '../data/iconRegistry';
+import { createSunflowerRelief } from './createSunflowerRelief';
 import { LIMITS, type ModelSettings } from './units';
 
 export interface GeometryBuildResult { group: THREE.Group; geometry: THREE.BufferGeometry; }
@@ -88,7 +90,11 @@ const createSilhouetteMeshes = (svgText: string, targetWidth: number, targetHeig
   });
 };
 
-export const createModelGroup = (svgText: string, settings: ModelSettings): GeometryBuildResult => {
+export const createModelGroup = (icon: IconDefinition, settings: ModelSettings): GeometryBuildResult => {
+  if (icon.id === 'sunflower' && settings.modelMode === 'relief') {
+    return { group: createSunflowerRelief(settings), geometry: new THREE.BufferGeometry() };
+  }
+
   const output = new THREE.Group();
   const isRelief = settings.modelMode === 'relief';
   const silhouetteDepth = isRelief ? settings.reliefHeight : settings.depth;
@@ -102,7 +108,7 @@ export const createModelGroup = (svgText: string, settings: ModelSettings): Geom
     output.add(createExtrudedMesh(createPlateShape(settings), settings.plateThickness, plateMaterial, settings.bevelEnabled));
   }
 
-  for (const mesh of createSilhouetteMeshes(svgText, targetWidth, targetHeight, silhouetteDepth, plateDepth, settings.bevelEnabled)) {
+  for (const mesh of createSilhouetteMeshes(icon.svg, targetWidth, targetHeight, silhouetteDepth, plateDepth, settings.bevelEnabled)) {
     output.add(mesh);
   }
 
