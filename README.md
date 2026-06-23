@@ -60,6 +60,11 @@ npm run build
 2. `npm run build` を実行します。
 3. 生成された `dist/` の中身をGitHub Pagesの公開対象にします。
 
+
+### 「読み込み中」のまま止まる場合
+
+画面に「シルエットSTLメーカーを読み込み中です」と表示されたままの場合、GitHub Pagesが `dist/` ではなくリポジトリ直下の `index.html` を配信しています。Settings → Pages → Build and deployment → Source を **GitHub Actions** に変更し、Actionsタブから **Deploy static app to GitHub Pages** を再実行してください。
+
 ## アイコン追加方法
 
 `src/data/iconRegistry.ts` に `IconDefinition` を追加します。各アイコンには必ず `id`, `label`, `aliases`, `svg`, `license`, `source`, `modified`, `printability` を設定してください。初期アイコンは `viewBox="0 0 100 100"` の単純な塗りつぶしSVGとして作っています。
